@@ -5,8 +5,10 @@ This container helps setting up a jailed SSH service. It can be useful when you 
 ## How to use this image
 
 ```sh
-$ docker run --name my-sshd -d xezpeleta/sshd
+$ docker run --name my-sshd -p 2222:22 -d xezpeleta/sshd
 ```
+
+Now, access it via SSH: `ssh root@host -p 2222`
 
 The following environment variables are also available:
 
