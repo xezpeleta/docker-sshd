@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  sshd:
+    build: xezpeleta/sshd
+    #volumes:
+    #  - /var/www:/var/www
+    environment:
+      - AUTHORIZED_KEYS=ssh-rsa AAAfsdfsafq!5554343... thisismysshpubkey 
+      - MOTD=Welcome! You can modify your at /var/www directory. More info, sysadmin@mydomain.com
+    ports:
+      - "2222:22"
