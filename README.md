@@ -21,6 +21,12 @@ Using a `volume` you can specify the directories/files that will be writeable by
 $ docker run --name my-sshd -e "AUTHORIZED_KEYS=ssh-rsa <my-pubkey>" -v /data:/data -p 2222:22 -d xezpeleta/sshd
 ```
 
+If you prefer, instead of using the `AUTHORIZED_KEYS` envvar, you can use your custom `.ssh/authorized_keys` file overwriting the file `/root/.ssh/authorized_keys`:
+
+```sh
+$ docker run --name my-sshd -v /path/authorized_keys:/root/.ssh/authorized_keys -p 2222:22 -d xezpeleta/sshd
+```
+
 ## ... vía docker-compose
 
 ```
