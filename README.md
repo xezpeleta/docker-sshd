@@ -12,10 +12,14 @@ Now, access it via SSH: `ssh root@host -p 2222`
 
 The following environment variables are also available:
 
-- `-e AUTHORIZED_KEYS=...` accepted ssh publick keys
+- `-e AUTHORIZED_KEYS=...` accepted ssh public keys
 - `-e MOTD=...` change ssh welcome message of the day
 
-Using a `volume` you can specify the directories/files that will be writeable by the ssh users.
+Using a `volume` you can specify the directories/files that will be writeable by the ssh users:
+
+```sh
+$ docker run --name my-sshd -e "AUTHORIZED_KEYS=ssh-rsa <my-pubkey>" -v /data:/data -p 2222:22 -d xezpeleta/sshd
+```
 
 ## ... vía docker-compose
 
@@ -28,8 +32,8 @@ services:
     #volumes:
     # - /var/www:/var/www
     environment:
-      - AUTHORIZED_KEYS=ssh-rsa AAAABfsdfdsafafafafafaf... thisismypubkey
-      - MOTD=Welcome! You can modify your at /var/www directory. More info, sysadmin@mydomain.com
+      - AUTHORIZED_KEYS=ssh-rsa <your-pubkey>
+      - MOTD=Welcome! You can modify your files at /var/www. More info, sysadmin@mydomain.com
     ports:
       - "2222:22"
 ```
