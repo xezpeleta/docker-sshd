@@ -12,7 +12,10 @@ Now, access it via SSH: `ssh root@host -p 2222`
 
 The following environment variables are also available:
 
-- `-e AUTHORIZED_KEYS=...` accepted ssh public keys
+- `-e AUTHORIZED_KEYS=...` accepted ssh public keys in any of these ways:
+  - Public key. Example: *ssh-rsa AAAfafafaf...*
+  - Public key file. Example: */my-id-rsa.pub*
+  - Public key directory. Example: */pubkeys*
 - `-e MOTD=...` change ssh welcome message of the day
 
 Using a `volume` you can specify the directories/files that will be writeable by the ssh users:
@@ -34,11 +37,12 @@ version: '2'
 
 services:
   sshd:
-    build: ./sshd
-    #volumes:
+    image: xezpeleta/sshd
+    volumes:
+    - ./pubkeys:/pubkeys
     # - /var/www:/var/www
     environment:
-      - AUTHORIZED_KEYS=ssh-rsa <your-pubkey>
+      - AUTHORIZED_KEYS=/pubkeys
       - MOTD=Welcome! You can modify your files at /var/www. More info, sysadmin@mydomain.com
     ports:
       - "2222:22"
