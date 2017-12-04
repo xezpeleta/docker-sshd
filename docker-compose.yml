@@ -2,7 +2,7 @@ version: '2'
 
 services:
   sshd:
-    build: xezpeleta/sshd
+    image: xezpeleta/sshd
     #volumes:
     #  - /var/www:/var/www
     volumes:
