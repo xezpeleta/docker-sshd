@@ -12,6 +12,10 @@ Now, access it via SSH: `ssh root@host -p 2222`
 
 The following environment variables are also available:
 
+- `-e SSH_USER=<username>` by default, root will be used
+- `-e SSH_PASSWORD=<password>` disabled by default (only pubkey access)
+- `-e SSH_HOME=</path/to/home>` by default, /root or /home/username
+- `-e SSH_SHELL=</path/to/shell>` by default, /bin/bash
 - `-e AUTHORIZED_KEYS=...` accepted ssh public keys in any of these ways:
   - Public key. Example: *ssh-rsa AAAfafafaf...*
   - Public key file. Example: */my-id-rsa.pub*
@@ -43,6 +47,10 @@ services:
     # - /var/www:/var/www
     environment:
       - AUTHORIZED_KEYS=/pubkeys
+      - SSH_USER=testuser
+      #- SSH_PASSWORD=changeme
+      #- SSH_HOME=/var/www
+      #- SSH_SHELL=/usr/bin/lshell
       - MOTD=Welcome! You can modify your files at /var/www. More info, sysadmin@mydomain.com
     ports:
       - "2222:22"
