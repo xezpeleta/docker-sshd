@@ -98,4 +98,4 @@ then
 fi
 
 # Run sshd service
-/usr/sbin/sshd -Dd
+/usr/sbin/sshd -D
