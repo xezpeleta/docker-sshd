@@ -3,13 +3,16 @@ version: '2'
 services:
   sshd:
     image: xezpeleta/sshd
-    #volumes:
-    #  - /var/www:/var/www
     volumes:
       - ./pubkeys:/pubkeys
+      #- /var/www:/var/www
+      #- ./lshell.conf:/etc/lshell.conf
     environment:
-      #- AUTHORIZED_KEYS=ssh-rsa AAAfsdfsafq!5554343... thisismysshpubkey 
+      - SSH_USER=xabi
+      # SSH_PASSWORD=changeme
+      #- SSH_HOME=/var/www
+      #- SSH_SHELL=/usr/bin/lshell
       - AUTHORIZED_KEYS=/pubkeys
-      - MOTD=Welcome! You can modify your at /var/www directory. More info, sysadmin@mydomain.com
+      #- MOTD=Welcome! You can modify your files at /var/www directory. More info, sysadmin@mydomain.com
     ports:
       - "2222:22"
