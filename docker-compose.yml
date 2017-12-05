@@ -9,7 +9,7 @@ services:
       #- ./lshell.conf:/etc/lshell.conf
     environment:
       - SSH_USER=xabi
-      # SSH_PASSWORD=changeme
+      #- SSH_PASSWORD=changeme
       #- SSH_HOME=/var/www
       #- SSH_SHELL=/usr/bin/lshell
       - AUTHORIZED_KEYS=/pubkeys
