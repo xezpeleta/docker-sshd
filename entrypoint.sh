@@ -75,7 +75,7 @@ then
     cat "$AUTHORIZED_KEYS" > $SSH_HOME/.ssh/authorized_keys
   # SSH pubkey
   else
-    echo "$AUTHORIZED_KEYS" > $SSH_HOME/.ssh/authorized_keys
+    printf "$AUTHORIZED_KEYS" > $SSH_HOME/.ssh/authorized_keys
   fi
 fi
 
